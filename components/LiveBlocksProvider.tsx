@@ -1,6 +1,5 @@
 "use client";
 
-import React, { ReactNode } from "react";
 import { LiveblocksProvider } from "@liveblocks/react/suspense";
 
 function LiveBlocksProvider({ children }: { children: React.ReactNode }) {

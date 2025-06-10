@@ -1,10 +1,12 @@
+"use client";
+
 import { doc, updateDoc } from "firebase/firestore";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { FormEvent, useEffect, useState, useTransition } from "react";
 import { db } from "@/firebase";
-import { title } from "process";
 import { useDocumentData } from "react-firebase-hooks/firestore";
+import Editor from "./Editor";
 
 function Document({ id }: { id: string }) {
   const [input, setInput] = useState("");
@@ -38,7 +40,7 @@ function Document({ id }: { id: string }) {
             {isUpdating ? "Updating" : "Update"}
           </Button>
           {/* IF */}
-          {/* isOwener, &&  inviteusers, deleteDocuments */}
+          {/* isOwner, &&  inviteusers, deleteDocuments */}
         </form>
       </div>
 
@@ -48,7 +50,7 @@ function Document({ id }: { id: string }) {
         {/* Avatars */}
       </div>
 
-      {/* collaborative editor */}
+      <Editor />
     </div>
   );
 }

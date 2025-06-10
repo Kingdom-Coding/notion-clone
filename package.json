@@ -9,11 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@blocknote/core": "^0.31.1",
-    "@blocknote/mantine": "^0.31.1",
-    "@blocknote/react": "^0.31.1",
+    "@blocknote/core": "^0.32.0-hackdays.0",
+    "@blocknote/react": "^0.32.0-hackdays.0",
+    "@blocknote/shadcn": "^0.32.0-hackdays.0",
     "@clerk/nextjs": "^6.20.0",
     "@liveblocks/client": "^2.24.3",
+    "@liveblocks/node": "^2.24.3",
     "@liveblocks/react": "^2.24.3",
     "@liveblocks/react-blocknote": "^2.24.3",
     "@liveblocks/react-ui": "^2.24.3",
@@ -23,12 +24,14 @@
     "clsx": "^2.1.1",
     "firebase": "^11.8.1",
     "firebase-admin": "^13.4.0",
+    "framer-motion": "^12.16.0",
     "lucide-react": "^0.511.0",
     "next": "15.3.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-firebase-hooks": "^5.1.1",
-    "tailwind-merge": "^3.3.0"
+    "tailwind-merge": "^3.3.0",
+    "yjs": "^13.6.27"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
