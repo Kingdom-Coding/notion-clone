@@ -9,9 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@blocknote/core": "^0.32.0-hackdays.0",
-    "@blocknote/react": "^0.32.0-hackdays.0",
-    "@blocknote/shadcn": "^0.32.0-hackdays.0",
+    "@blocknote/core": "^0.31.2",
+    "@blocknote/react": "^0.31.2",
+    "@blocknote/shadcn": "^0.31.2",
     "@clerk/nextjs": "^6.20.0",
     "@liveblocks/client": "^2.24.3",
     "@liveblocks/node": "^2.24.3",
