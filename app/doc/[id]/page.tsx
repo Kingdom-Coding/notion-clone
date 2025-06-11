@@ -2,16 +2,6 @@
 import Document from "@/components/Document";
 import { use } from "react";
 
-/* export default function Page({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  const { id } = use(params); // ✅ unwrapping promise
-
-  return <div>Document ID: {id}</div>;
-} */
-
 function DocumentPage({
   params,
 }: {
