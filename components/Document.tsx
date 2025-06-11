@@ -7,11 +7,14 @@ import { FormEvent, useEffect, useState, useTransition } from "react";
 import { db } from "@/firebase";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import Editor from "./Editor";
+import UseOwner from "@/lib/useOwner";
+import DeleteDocument from "./DeleteDocument";
 
 function Document({ id }: { id: string }) {
   const [input, setInput] = useState("");
   const [isUpdating, startTransition] = useTransition();
   const [data, loading, error] = useDocumentData(doc(db, "documents", id));
+  const isOwner = UseOwner();
 
   useEffect(() => {
     if (data) setInput(data.title);
@@ -40,6 +43,12 @@ function Document({ id }: { id: string }) {
             {isUpdating ? "Updating" : "Update"}
           </Button>
           {/* IF */}
+
+          {isOwner && (
+            <>
+              <DeleteDocument />
+            </>
+          )}
           {/* isOwner, &&  inviteusers, deleteDocuments */}
         </form>
       </div>
