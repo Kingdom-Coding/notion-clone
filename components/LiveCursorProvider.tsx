@@ -13,7 +13,7 @@ function LiveCursorProvider({ children }: { children: React.ReactNode }) {
     updateMyPresence({ cursor });
   }
 
-  function handlePointerLeave(e: PointerEvent<HTMLDivElement>) {
+  function handlePointerLeave() {
     updateMyPresence({ cursor: null });
   }
 
