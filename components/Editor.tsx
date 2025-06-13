@@ -12,6 +12,7 @@ import { BlockNoteEditor } from "@blocknote/core";
 import "@blocknote/shadcn/style.css";
 import "@blocknote/core/fonts/inter.css";
 import stringToColor from "@/lib/stringToColor";
+import { userInfo } from "os";
 
 type EditorProps = {
   doc: Y.Doc;
@@ -21,8 +22,12 @@ type EditorProps = {
 
 function BlockNote({ doc, provider, darkMode }: EditorProps) {
   const userInfo = useSelf((me) => me.info);
+  const [editor, setEditor] = useState<BlockNoteEditor | null>(null);
 
-  const editor: BlockNoteEditor = useCreateBlockNote({
+  if (!userInfo?.name || !userInfo?.email || !editor) return;
+
+  
+  const editorInstance = useCreateBlockNote({
     collaboration: {
       provider,
       fragment: doc.getXmlFragment("document-store"),
@@ -32,6 +37,7 @@ function BlockNote({ doc, provider, darkMode }: EditorProps) {
       },
     },
   });
+  setEditor(editorInstance);
 
   return (
     <div className="relative max-w-6xl mx-auto">
@@ -62,7 +68,6 @@ function Editor() {
       yProvider?.destroy();
     };
   }, [room]);
-  if (!doc || !provider) return null;
 
   const style = `hover: text-white ${
     darkMode
@@ -71,6 +76,9 @@ function Editor() {
   }
   `;
 
+  if (!doc || !provider) {
+    return <div className="text-center mt-10">Loading editor...</div>;
+  }
   return (
     <div className="max-w-6xl mx-auto">
       <div className="flex item-center gap-2 justify-end mb-10">
@@ -83,7 +91,6 @@ function Editor() {
         </Button>
       </div>
 
-      {/*editor*/}
       <BlockNote doc={doc} provider={provider} darkMode={darkMode} />
     </div>
   );
