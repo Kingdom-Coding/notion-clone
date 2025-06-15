@@ -9,6 +9,9 @@ import { useDocumentData } from "react-firebase-hooks/firestore";
 import Editor from "./Editor";
 import UseOwner from "@/lib/useOwner";
 import DeleteDocument from "./DeleteDocument";
+import InviteUsers from "./InviteUsers";
+import ManageUsers from "./ManageUsers";
+import Avatars from "./Avatars";
 
 function Document({ id }: { id: string }) {
   const [input, setInput] = useState("");
@@ -36,27 +39,25 @@ function Document({ id }: { id: string }) {
     <div>
       <div className="flex max-w-6xl mx-auto justify-between pb-5">
         <form className="flex flex-1 space-x-2" onSubmit={updateTitle}>
-          {/*update title...*/}
           <Input value={input} onChange={(e) => setInput(e.target.value)} />
 
           <Button disabled={isUpdating} type="submit">
             {isUpdating ? "Updating" : "Update"}
           </Button>
-          {/* IF */}
 
           {isOwner && (
             <>
+              <InviteUsers />
               <DeleteDocument />
             </>
           )}
-          {/* isOwner, &&  inviteusers, deleteDocuments */}
         </form>
       </div>
 
-      <div>
-        {/* ManageUsers */}
+      <div className="flex max-w-6xl mx-auto justify-between items-center mb-5">
+        <ManageUsers />
 
-        {/* Avatars */}
+        <Avatars />
       </div>
 
       <Editor />
