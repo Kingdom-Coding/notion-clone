@@ -12,7 +12,6 @@ import { BlockNoteEditor } from "@blocknote/core";
 import "@blocknote/shadcn/style.css";
 import "@blocknote/core/fonts/inter.css";
 import stringToColor from "@/lib/stringToColor";
-import { userInfo } from "os";
 
 type EditorProps = {
   doc: Y.Doc;
@@ -22,12 +21,8 @@ type EditorProps = {
 
 function BlockNote({ doc, provider, darkMode }: EditorProps) {
   const userInfo = useSelf((me) => me.info);
-  const [editor, setEditor] = useState<BlockNoteEditor | null>(null);
 
-  if (!userInfo?.name || !userInfo?.email || !editor) return;
-
-  
-  const editorInstance = useCreateBlockNote({
+  const editor: BlockNoteEditor = useCreateBlockNote({
     collaboration: {
       provider,
       fragment: doc.getXmlFragment("document-store"),
@@ -37,7 +32,6 @@ function BlockNote({ doc, provider, darkMode }: EditorProps) {
       },
     },
   });
-  setEditor(editorInstance);
 
   return (
     <div className="relative max-w-6xl mx-auto">
